@@ -189,8 +189,41 @@
     return formatted || "Non indicata";
   }
 
-  function formatContactEmail(value) {
-    return value || "Non indicata";
+  function escapeHtml(value) {
+    if (!value) return "";
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function buildEmailLink(email) {
+    if (!email) return "Non indicata";
+    const safeEmail = escapeHtml(email);
+    return `<a href="mailto:${encodeURIComponent(email)}">${safeEmail}</a>`;
+  }
+
+  function normalizeWebsiteUrl(url) {
+    if (!url) return "";
+    const trimmed = url.trim();
+    if (!trimmed) return "";
+    return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+  }
+
+  function buildWebsiteLink(website) {
+    const normalized = normalizeWebsiteUrl(website);
+    if (!normalized) return "Non disponibile";
+    const safeUrl = escapeHtml(normalized);
+    return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${safeUrl}</a>`;
+  }
+
+  function formatContactHtml(contact) {
+    return {
+      email: buildEmailLink(contact?.public_email),
+      website: buildWebsiteLink(contact?.website_url),
+    };
   }
 
   function formatDays(days) {
@@ -217,6 +250,7 @@
     state.markers.clear();
 
     results.forEach((item) => {
+      const contact = formatContactHtml(item.contact);
       const marker = L.marker([item.lat, item.lng]).addTo(state.map);
       marker.bindPopup(
         `<div class="popup">
@@ -249,7 +283,11 @@
           </div>
           <div class="popup-row">
             <span>Email</span>
-            <span>${formatContactEmail(item.contact?.public_email)}</span>
+            <span>${contact.email}</span>
+          </div>
+          <div class="popup-row">
+            <span>Sito web</span>
+            <span>${contact.website}</span>
           </div>
         </div>`,
       );
@@ -284,6 +322,7 @@
       elements.results.appendChild(empty);
     } else {
       results.forEach((item) => {
+        const contact = formatContactHtml(item.contact);
         const card = document.createElement("div");
         card.className = `result-card ${state.activeId === item.id ? "active" : ""}`;
         card.dataset.id = item.id;
@@ -311,7 +350,11 @@
           </div>
           <div class="result-meta result-detail-row">
             <span>Email</span>
-            <span>${formatContactEmail(item.contact?.public_email)}</span>
+            <span>${contact.email}</span>
+          </div>
+          <div class="result-meta result-detail-row">
+            <span>Sito web</span>
+            <span>${contact.website}</span>
           </div>
           ${
             item.catechesis.last_verified_at
