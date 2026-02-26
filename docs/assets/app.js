@@ -401,6 +401,7 @@
 
     state.activeId = id;
     const formUrl = buildGoogleFormUrl(parish);
+    const contact = formatContactHtml(parish.contact);
 
     elements.modalContent.innerHTML = `
       <h3>${parish.name}</h3>
@@ -424,7 +425,10 @@
           Inizio catechesi: ${formatStartDate(parish.catechesis.start_date)}
         </div>
         <div class="result-meta">
-          Email: ${formatContactEmail(parish.contact?.public_email)}
+          Email: ${contact.email}
+        </div>
+        <div class="result-meta">
+          Sito web: ${contact.website}
         </div>
         ${
           parish.catechesis.last_verified_at
