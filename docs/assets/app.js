@@ -29,13 +29,13 @@
   };
 
   const dayMap = {
-    Mon: "Lun",
-    Tue: "Mar",
-    Wed: "Mer",
-    Thu: "Gio",
-    Fri: "Ven",
-    Sat: "Sab",
-    Sun: "Dom",
+    Mon: "Lunedì",
+    Tue: "Martedì",
+    Wed: "Mercoledì",
+    Thu: "Giovedì",
+    Fri: "Venerdì",
+    Sat: "Sabato",
+    Sun: "Domenica",
   };
 
   const statusMap = {
