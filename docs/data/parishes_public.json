@@ -77,9 +77,9 @@
       "source_level": "COMMUNITY",
       "last_verified_at": "2026-02-26T17:14:26.098Z"
     },
-    {"id":"rom-19b38","name":"Natività di Nostro Signore Gesù Cristo","address":"Via Gallia 162","lat":41.8811034,"lng":12.5035339,"city":"Roma ","is_active":true,"contact":{"public_email":"","website_url":""},"catechesis":{"year":2026,"status":"AVAILABLE","days":["Mon","Thu"],"time":"20:30","start_date":"2/9/2026","source_level":"VERIFIED","last_verified_at":"2026-02-26T21:05:10.329Z"}
+    {"id":"rom-19b38","name":"Natività di Nostro Signore Gesù Cristo","address":"Via Gallia 162","lat":41.8811034,"lng":12.5035339,"city":"Roma ","is_active":true,"contact":{"public_email":"","website_url":""},"catechesis":{"year":2026,"status":"AVAILABLE","days":["Mon","Thu"],"time":"20:30","start_date":"2026-02-09T23:00:00.000Z","source_level":"VERIFIED","last_verified_at":"2026-02-26T21:05:10.329Z"}
     },
-    {"id":"rom-b41c7","name":"Santa Francesca Cabrini","address":"Piazza Massa Carrara, 15","lat":41.9177581,"lng":12.5259216,"city":"Roma ","is_active":true,"contact":{"public_email":"","website_url":""},"catechesis":{"year":2026,"status":"AVAILABLE","days":["Mon","Thu"],"time":"20:30","start_date":"2/2/2026","source_level":"VERIFIED","last_verified_at":"2026-02-26T21:07:37.770Z"}
+    {"id":"rom-b41c7","name":"Santa Francesca Cabrini","address":"Piazza Massa Carrara, 15","lat":41.9177581,"lng":12.5259216,"city":"Roma ","is_active":true,"contact":{"public_email":"","website_url":""},"catechesis":{"year":2026,"status":"AVAILABLE","days":["Mon","Thu"],"time":"20:30","start_date":"2026-02-02T23:00:00.000Z","source_level":"VERIFIED","last_verified_at":"2026-02-26T21:07:37.770Z"}
     }
   }
   ]
