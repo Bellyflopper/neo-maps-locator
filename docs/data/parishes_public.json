@@ -19,7 +19,7 @@
         "status": "AVAILABLE",
         "days": ["Mon", "Tue"],
         "time": "20:30",
-        "start_date": "2026-03-02T23:00:00.000Z",
+        "start_date": "2026-03-02T00:00:00.000Z",
         "source_level": "COMMUNITY",
         "last_verified_at": "2026-02-26T17:14:25.809Z"
       }
@@ -41,7 +41,7 @@
         "status": "AVAILABLE",
         "days": ["Mon", "Thu"],
         "time": "20:45",
-        "start_date": "2026-03-01T23:00:00.000Z",
+        "start_date": "2026-03-01T00:00:00.000Z",
         "source_level": "VERIFIED",
         "last_verified_at": "2026-02-26T17:14:25.994Z"
       }
@@ -63,7 +63,7 @@
         "status": "AVAILABLE",
         "days": ["Wed", "Thu", "Fri"],
         "time": "18:00",
-        "start_date": "2026-02-28T23:00:00.000Z",
+        "start_date": "2026-02-28T00:00:00.000Z",
         "source_level": "COMMUNITY",
         "last_verified_at": "2026-02-26T17:14:26.098Z"
       }
@@ -85,7 +85,7 @@
         "status": "AVAILABLE",
         "days": ["Mon", "Thu"],
         "time": "20:30",
-        "start_date": "2026-02-09T23:00:00.000Z",
+        "start_date": "2026-02-09T00:00:00.000Z",
         "source_level": "VERIFIED",
         "last_verified_at": "2026-02-26T21:05:10.329Z"
       }
@@ -107,7 +107,7 @@
         "status": "AVAILABLE",
         "days": ["Mon", "Thu"],
         "time": "20:30",
-        "start_date": "2026-02-02T23:00:00.000Z",
+        "start_date": "2026-02-02T00:00:00.000Z",
         "source_level": "VERIFIED",
         "last_verified_at": "2026-02-26T21:07:37.770Z"
       }
