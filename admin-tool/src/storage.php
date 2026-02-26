@@ -77,12 +77,14 @@ function regenerate_public_json(array $master, string $publicPath): void
             'is_active' => $parish['is_active'] ?? true,
             'contact' => [
                 'public_email' => $parish['contact']['public_email'] ?? null,
+                'website_url' => $parish['contact']['website_url'] ?? null,
             ],
             'catechesis' => [
                 'year' => $parish['catechesis']['year'] ?? (int)date('Y'),
                 'status' => $parish['catechesis']['status'] ?? 'UNKNOWN',
                 'days' => $parish['catechesis']['days'] ?? [],
                 'time' => $parish['catechesis']['time'] ?? null,
+                'start_date' => $parish['catechesis']['start_date'] ?? null,
                 'source_level' => $parish['catechesis']['source_level'] ?? 'COMMUNITY',
                 'last_verified_at' => $parish['catechesis']['last_verified_at'] ?? null,
             ],

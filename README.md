@@ -52,12 +52,13 @@ Cerchiamo contributi su:
 Nel file `/docs/data/parishes_public.json`, ogni record parrocchia include:
 
 - **Obbligatori**: `id`, `name`, `address`
-- **Opzionali**: `lat`, `lng`, `diocese`, `city`, `is_active`, `contact.public_email`
+- **Opzionali**: `lat`, `lng`, `diocese`, `city`, `is_active`, `contact.public_email`, `contact.website_url`
 - Campo `catechesis` (sempre presente):
   - `year` (es. `2026`)
   - `status`: `AVAILABLE | NOT_AVAILABLE | UNKNOWN`
   - `days`: array es. `["Mon", "Thu"]` oppure `[]`
   - `time`: `"HH:MM"` oppure `null`
+  - `start_date`: data ISO (`YYYY-MM-DD`) oppure `null`
   - `source_level`: `VERIFIED | COMMUNITY`
   - `last_verified_at`: timestamp ISO o `null`
 
