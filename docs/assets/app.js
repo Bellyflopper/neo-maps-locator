@@ -633,6 +633,10 @@
       state.missingLocation = missingLocation;
       updateMap(results);
       renderResults(results, missingLocation);
+      const contentContainer = document.getElementById("content-container");
+      if (contentContainer) {
+        contentContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
       showToast("Ricerca completata.", "success");
     } catch (error) {
       if (error.message === "RATE_LIMIT") {
