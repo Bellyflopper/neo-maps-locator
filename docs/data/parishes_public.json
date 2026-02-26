@@ -21,7 +21,7 @@
         "Mon",
         "Tue"
       ],
-      "time": "1899-12-30T20:51:16.000Z",
+      "time": "20:30",
       "start_date": "2026-03-02T23:00:00.000Z",
       "source_level": "COMMUNITY",
       "last_verified_at": "2026-02-26T17:14:25.809Z"
@@ -46,7 +46,7 @@
         "Mon",
         "Thu"
       ],
-      "time": "1899-12-30T21:06:16.000Z",
+      "time": "20:45",
       "start_date": "2026-03-01T23:00:00.000Z",
       "source_level": "VERIFIED",
       "last_verified_at": "2026-02-26T17:14:25.994Z"
@@ -54,7 +54,7 @@
   },
   {
     "id": "rom-ff364",
-    "name": "Parrocchia Pippo",
+    "name": "Parrocchia Test",
     "address": "Via Silicella 23",
     "lat": 41.8641047,
     "lng": 12.5988076,
@@ -72,7 +72,7 @@
         "Thu",
         "Fri"
       ],
-      "time": "1899-12-30T19:21:16.000Z",
+      "time": "18:00",
       "start_date": "2026-02-28T23:00:00.000Z",
       "source_level": "COMMUNITY",
       "last_verified_at": "2026-02-26T17:14:26.098Z"
