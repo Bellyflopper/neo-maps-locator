@@ -345,6 +345,14 @@
             </span>
           </div>
           <div class="result-meta result-detail-row">
+            <span>Giorni</span>
+            <span>${formatDays(item.catechesis.days)}</span>
+          </div>
+          <div class="result-meta result-detail-row">
+            <span>Orario</span>
+            <span>${item.catechesis.time || "Non indicato"}</span>
+          </div>
+          <div class="result-meta result-detail-row">
             <span>Inizio catechesi</span>
             <span>${formatStartDate(item.catechesis.start_date)}</span>
           </div>
