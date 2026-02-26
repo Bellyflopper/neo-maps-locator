@@ -37,6 +37,34 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self' https://docs.google.com; script-src 'self' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; img-src 'self' data: blob: https://unpkg.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://nominatim.openstreetmap.org; frame-src 'none'; upgrade-insecure-requests"
     />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://giovanisp.github.io/neo-maps-locator/#organization",
+            "name": "Trova Catechesi del Cammino Neocatecumenale – Roma",
+            "url": "https://giovanisp.github.io/neo-maps-locator/",
+            "description": "Servizio per cercare catechesi del Cammino Neocatecumenale a Roma, individuando le parrocchie sulla mappa e quelle più vicine.",
+            "sameAs": ["https://github.com/giovanisp/neo-maps-locator"]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://giovanisp.github.io/neo-maps-locator/#website",
+            "name": "Trova Catechesi del Cammino Neocatecumenale – Roma",
+            "url": "https://giovanisp.github.io/neo-maps-locator/",
+            "inLanguage": "it-IT",
+            "areaServed": "Rome",
+            "about": "Ricerca di parrocchie e catechesi del Cammino Neocatecumenale a Roma",
+            "description": "Trova catechesi del Cammino Neocatecumenale a Roma: cerca per zona, visualizza le parrocchie sulla mappa e scopri rapidamente quelle più vicine a te.",
+            "publisher": {
+              "@id": "https://giovanisp.github.io/neo-maps-locator/#organization"
+            }
+          }
+        ]
+      }
+    </script>
     <title>Trova Catechesi del Cammino Neocatecumenale – Roma</title>
     <link rel="icon" type="image/jpeg" href="./assets/logo-cammino.jpg" />
     <link rel="shortcut icon" href="./assets/logo-cammino.jpg" />
