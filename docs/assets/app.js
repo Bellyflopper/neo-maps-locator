@@ -189,40 +189,85 @@
     return formatted || "Non indicata";
   }
 
-  function escapeHtml(value) {
-    if (!value) return "";
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/\"/g, "&quot;")
-      .replace(/'/g, "&#39;");
+  function sanitizeText(value, fallback = "") {
+    if (value === null || value === undefined) return fallback;
+    const normalized = String(value).trim();
+    return normalized || fallback;
   }
 
-  function buildEmailLink(email) {
-    if (!email) return "Non indicata";
-    const safeEmail = escapeHtml(email);
-    return `<a href="mailto:${encodeURIComponent(email)}">${safeEmail}</a>`;
+  function createElementWithText(tagName, className, text) {
+    const element = document.createElement(tagName);
+    if (className) {
+      element.className = className;
+    }
+    element.textContent = sanitizeText(text);
+    return element;
+  }
+
+  function createDetailRow(label, value, className = "") {
+    const row = document.createElement("div");
+    row.className = `result-meta result-detail-row ${className}`.trim();
+
+    row.appendChild(createElementWithText("span", "", label));
+
+    const valueContainer = document.createElement("span");
+    if (value instanceof Node) {
+      valueContainer.appendChild(value);
+    } else {
+      valueContainer.textContent = sanitizeText(value);
+    }
+
+    row.appendChild(valueContainer);
+    return row;
+  }
+
+  function createEmailNode(email) {
+    const safeEmail = sanitizeText(email);
+    if (!safeEmail) {
+      return document.createTextNode("Non indicata");
+    }
+
+    const emailLink = document.createElement("a");
+    emailLink.href = `mailto:${encodeURIComponent(safeEmail)}`;
+    emailLink.textContent = safeEmail;
+    return emailLink;
   }
 
   function normalizeWebsiteUrl(url) {
-    if (!url) return "";
-    const trimmed = url.trim();
+    const trimmed = sanitizeText(url);
     if (!trimmed) return "";
-    return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+
+    const candidate = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+
+    try {
+      const parsed = new URL(candidate);
+      if (!["http:", "https:"].includes(parsed.protocol)) {
+        return "";
+      }
+      return parsed.toString();
+    } catch {
+      return "";
+    }
   }
 
-  function buildWebsiteLink(website) {
+  function createWebsiteNode(website) {
     const normalized = normalizeWebsiteUrl(website);
-    if (!normalized) return "Non disponibile";
-    const safeUrl = escapeHtml(normalized);
-    return `<a href="${safeUrl}" target="_blank" rel="noopener noreferrer">${safeUrl}</a>`;
+    if (!normalized) {
+      return document.createTextNode("Non disponibile");
+    }
+
+    const websiteLink = document.createElement("a");
+    websiteLink.href = normalized;
+    websiteLink.target = "_blank";
+    websiteLink.rel = "noopener noreferrer";
+    websiteLink.textContent = normalized;
+    return websiteLink;
   }
 
-  function formatContactHtml(contact) {
+  function formatContactNodes(contact) {
     return {
-      email: buildEmailLink(contact?.public_email),
-      website: buildWebsiteLink(contact?.website_url),
+      email: createEmailNode(contact?.public_email),
+      website: createWebsiteNode(contact?.website_url),
     };
   }
 
@@ -250,47 +295,61 @@
     state.markers.clear();
 
     results.forEach((item) => {
-      const contact = formatContactHtml(item.contact);
+      const contact = formatContactNodes(item.contact);
       const marker = L.marker([item.lat, item.lng]).addTo(state.map);
-      marker.bindPopup(
-        `<div class="popup">
-          <div class="popup-title">${item.name}</div>
-          <div class="popup-status">
-            <span class="status-pill ${statusClassMap[item.catechesis.status]}">
-              ${statusMap[item.catechesis.status]}
-            </span>
-            <span class="badge ${
-              item.catechesis.source_level === "VERIFIED" ? "verified" : "community"
-            }">
-              ${
-                item.catechesis.source_level === "VERIFIED"
-                  ? "Verificata"
-                  : "Segnalata dalla community"
-              }
-            </span>
-          </div>
-          <div class="popup-row">
-            <span>Giorni</span>
-            <span>${formatDays(item.catechesis.days)}</span>
-          </div>
-          <div class="popup-row">
-            <span>Orario</span>
-            <span>${item.catechesis.time || "Non indicato"}</span>
-          </div>
-          <div class="popup-row">
-            <span>Inizio catechesi</span>
-            <span>${formatStartDate(item.catechesis.start_date)}</span>
-          </div>
-          <div class="popup-row">
-            <span>Email</span>
-            <span>${contact.email}</span>
-          </div>
-          <div class="popup-row">
-            <span>Sito web</span>
-            <span>${contact.website}</span>
-          </div>
-        </div>`,
+      const popup = document.createElement("div");
+      popup.className = "popup";
+      popup.appendChild(createElementWithText("div", "popup-title", item.name));
+
+      const popupStatus = document.createElement("div");
+      popupStatus.className = "popup-status";
+      popupStatus.appendChild(
+        createElementWithText(
+          "span",
+          `status-pill ${statusClassMap[item.catechesis.status]}`,
+          statusMap[item.catechesis.status],
+        ),
       );
+      popupStatus.appendChild(
+        createElementWithText(
+          "span",
+          `badge ${item.catechesis.source_level === "VERIFIED" ? "verified" : "community"}`,
+          item.catechesis.source_level === "VERIFIED"
+            ? "Verificata"
+            : "Segnalata dalla community",
+        ),
+      );
+      popup.appendChild(popupStatus);
+
+      [
+        ["Giorni", formatDays(item.catechesis.days)],
+        ["Orario", sanitizeText(item.catechesis.time, "Non indicato")],
+        ["Inizio catechesi", formatStartDate(item.catechesis.start_date)],
+      ].forEach(([label, value]) => {
+        const row = document.createElement("div");
+        row.className = "popup-row";
+        row.appendChild(createElementWithText("span", "", label));
+        row.appendChild(createElementWithText("span", "", value));
+        popup.appendChild(row);
+      });
+
+      const emailRow = document.createElement("div");
+      emailRow.className = "popup-row";
+      emailRow.appendChild(createElementWithText("span", "", "Email"));
+      const emailValue = document.createElement("span");
+      emailValue.appendChild(contact.email);
+      emailRow.appendChild(emailValue);
+      popup.appendChild(emailRow);
+
+      const websiteRow = document.createElement("div");
+      websiteRow.className = "popup-row";
+      websiteRow.appendChild(createElementWithText("span", "", "Sito web"));
+      const websiteValue = document.createElement("span");
+      websiteValue.appendChild(contact.website);
+      websiteRow.appendChild(websiteValue);
+      popup.appendChild(websiteRow);
+
+      marker.bindPopup(popup);
       state.markers.set(item.id, marker);
     });
   }
@@ -322,56 +381,53 @@
       elements.results.appendChild(empty);
     } else {
       results.forEach((item) => {
-        const contact = formatContactHtml(item.contact);
+        const contact = formatContactNodes(item.contact);
         const card = document.createElement("div");
         card.className = `result-card ${state.activeId === item.id ? "active" : ""}`;
         card.dataset.id = item.id;
-        card.innerHTML = `
-          <div class="result-title">${item.name}</div>
-          <div class="result-meta">${item.address}</div>
-          <div class="result-meta">
-            <span>${item.distance.toFixed(1)} km</span>
-            <span class="status-pill ${statusClassMap[item.catechesis.status]}">
-              ${statusMap[item.catechesis.status]}
-            </span>
-            <span class="badge ${
-              item.catechesis.source_level === "VERIFIED" ? "verified" : "community"
-            }">
-              ${
-                item.catechesis.source_level === "VERIFIED"
-                  ? "Verificata"
-                  : "Segnalata dalla community"
-              }
-            </span>
-          </div>
-          <div class="result-meta result-detail-row">
-            <span>Giorni</span>
-            <span>${formatDays(item.catechesis.days)}</span>
-          </div>
-          <div class="result-meta result-detail-row">
-            <span>Orario</span>
-            <span>${item.catechesis.time || "Non indicato"}</span>
-          </div>
-          <div class="result-meta result-detail-row">
-            <span>Inizio catechesi</span>
-            <span>${formatStartDate(item.catechesis.start_date)}</span>
-          </div>
-          <div class="result-meta result-detail-row">
-            <span>Email</span>
-            <span>${contact.email}</span>
-          </div>
-          <div class="result-meta result-detail-row">
-            <span>Sito web</span>
-            <span>${contact.website}</span>
-          </div>
-          ${
-            item.catechesis.last_verified_at
-              ? `<div class="result-meta">Aggiornato il ${formatDate(
-                  item.catechesis.last_verified_at,
-                )}</div>`
-              : ""
-          }
-        `;
+        card.appendChild(createElementWithText("div", "result-title", item.name));
+        card.appendChild(createElementWithText("div", "result-meta", item.address));
+
+        const meta = document.createElement("div");
+        meta.className = "result-meta";
+        meta.appendChild(createElementWithText("span", "", `${item.distance.toFixed(1)} km`));
+        meta.appendChild(
+          createElementWithText(
+            "span",
+            `status-pill ${statusClassMap[item.catechesis.status]}`,
+            statusMap[item.catechesis.status],
+          ),
+        );
+        meta.appendChild(
+          createElementWithText(
+            "span",
+            `badge ${item.catechesis.source_level === "VERIFIED" ? "verified" : "community"}`,
+            item.catechesis.source_level === "VERIFIED"
+              ? "Verificata"
+              : "Segnalata dalla community",
+          ),
+        );
+        card.appendChild(meta);
+
+        card.appendChild(createDetailRow("Giorni", formatDays(item.catechesis.days)));
+        card.appendChild(
+          createDetailRow("Orario", sanitizeText(item.catechesis.time, "Non indicato")),
+        );
+        card.appendChild(
+          createDetailRow("Inizio catechesi", formatStartDate(item.catechesis.start_date)),
+        );
+        card.appendChild(createDetailRow("Email", contact.email));
+        card.appendChild(createDetailRow("Sito web", contact.website));
+
+        if (item.catechesis.last_verified_at) {
+          card.appendChild(
+            createElementWithText(
+              "div",
+              "result-meta",
+              `Aggiornato il ${formatDate(item.catechesis.last_verified_at)}`,
+            ),
+          );
+        }
 
         card.addEventListener("click", () => focusResult(item.id));
         elements.results.appendChild(card);
@@ -401,68 +457,99 @@
 
     state.activeId = id;
     const formUrl = buildGoogleFormUrl(parish);
-    const contact = formatContactHtml(parish.contact);
+    const contact = formatContactNodes(parish.contact);
 
-    elements.modalContent.innerHTML = `
-      <h3>${parish.name}</h3>
-      <p>${parish.address}</p>
-      <div class="modal-section">
-        <strong>Distanza</strong>
-        <div>${parish.distance.toFixed(1)} km</div>
-      </div>
-      <div class="modal-section">
-        <strong>Catechesi ${parish.catechesis.year}</strong>
-        <div class="status-pill ${statusClassMap[parish.catechesis.status]}">
-          ${statusMap[parish.catechesis.status]}
-        </div>
-        <div class="result-meta">
-          Giorni: ${formatDays(parish.catechesis.days)}
-        </div>
-        <div class="result-meta">
-          Orario: ${parish.catechesis.time || "Non indicato"}
-        </div>
-        <div class="result-meta">
-          Inizio catechesi: ${formatStartDate(parish.catechesis.start_date)}
-        </div>
-        <div class="result-meta">
-          Email: ${contact.email}
-        </div>
-        <div class="result-meta">
-          Sito web: ${contact.website}
-        </div>
-        ${
-          parish.catechesis.last_verified_at
-            ? `<div class="result-meta">Aggiornato il ${formatDate(
-                parish.catechesis.last_verified_at,
-              )}</div>`
-            : ""
-        }
+    elements.modalContent.innerHTML = "";
+    elements.modalContent.appendChild(createElementWithText("h3", "", parish.name));
+    elements.modalContent.appendChild(createElementWithText("p", "", parish.address));
 
-        <div class="badge ${
-          parish.catechesis.source_level === "VERIFIED" ? "verified" : "community"
-        }">
-          ${
-            parish.catechesis.source_level === "VERIFIED"
-              ? "Verificata"
-              : "Segnalata dalla community"
-          }
-        </div>
-        ${
-          parish.catechesis.source_level === "COMMUNITY"
-            ? `<div class="alert-community">
-                Consigliato contattare la parrocchia prima di recarsi alle catechesi per conferma.
-              </div>`
-            : ""
-        }
-      </div>
-      ${
-        formUrl
-          ? `<button class="action-btn" data-form="${formUrl}">
-              Richiedi info catechesi
-            </button>`
-          : ""
-      }
-    `;
+    const distanceSection = document.createElement("div");
+    distanceSection.className = "modal-section";
+    distanceSection.appendChild(createElementWithText("strong", "", "Distanza"));
+    distanceSection.appendChild(
+      createElementWithText("div", "", `${parish.distance.toFixed(1)} km`),
+    );
+    elements.modalContent.appendChild(distanceSection);
+
+    const catechesisSection = document.createElement("div");
+    catechesisSection.className = "modal-section";
+    catechesisSection.appendChild(
+      createElementWithText("strong", "", `Catechesi ${parish.catechesis.year}`),
+    );
+    catechesisSection.appendChild(
+      createElementWithText(
+        "div",
+        `status-pill ${statusClassMap[parish.catechesis.status]}`,
+        statusMap[parish.catechesis.status],
+      ),
+    );
+    catechesisSection.appendChild(
+      createElementWithText("div", "result-meta", `Giorni: ${formatDays(parish.catechesis.days)}`),
+    );
+    catechesisSection.appendChild(
+      createElementWithText(
+        "div",
+        "result-meta",
+        `Orario: ${sanitizeText(parish.catechesis.time, "Non indicato")}`,
+      ),
+    );
+    catechesisSection.appendChild(
+      createElementWithText(
+        "div",
+        "result-meta",
+        `Inizio catechesi: ${formatStartDate(parish.catechesis.start_date)}`,
+      ),
+    );
+
+    const emailRow = document.createElement("div");
+    emailRow.className = "result-meta";
+    emailRow.appendChild(document.createTextNode("Email: "));
+    emailRow.appendChild(contact.email);
+    catechesisSection.appendChild(emailRow);
+
+    const websiteRow = document.createElement("div");
+    websiteRow.className = "result-meta";
+    websiteRow.appendChild(document.createTextNode("Sito web: "));
+    websiteRow.appendChild(contact.website);
+    catechesisSection.appendChild(websiteRow);
+
+    if (parish.catechesis.last_verified_at) {
+      catechesisSection.appendChild(
+        createElementWithText(
+          "div",
+          "result-meta",
+          `Aggiornato il ${formatDate(parish.catechesis.last_verified_at)}`,
+        ),
+      );
+    }
+
+    catechesisSection.appendChild(
+      createElementWithText(
+        "div",
+        `badge ${parish.catechesis.source_level === "VERIFIED" ? "verified" : "community"}`,
+        parish.catechesis.source_level === "VERIFIED"
+          ? "Verificata"
+          : "Segnalata dalla community",
+      ),
+    );
+
+    if (parish.catechesis.source_level === "COMMUNITY") {
+      catechesisSection.appendChild(
+        createElementWithText(
+          "div",
+          "alert-community",
+          "Consigliato contattare la parrocchia prima di recarsi alle catechesi per conferma.",
+        ),
+      );
+    }
+
+    elements.modalContent.appendChild(catechesisSection);
+
+    if (formUrl) {
+      const button = createElementWithText("button", "action-btn", "Richiedi info catechesi");
+      button.setAttribute("data-form", formUrl);
+      elements.modalContent.appendChild(button);
+    }
 
     const formButton = elements.modalContent.querySelector(".action-btn");
     if (formButton) {
