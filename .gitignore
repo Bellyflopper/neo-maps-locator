@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Admin tool (local-only)
+ /admin-tool/config.local.php
+ /admin-tool/data/parishes_master.json
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

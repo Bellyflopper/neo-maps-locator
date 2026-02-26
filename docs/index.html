@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Trova Catechesi – Roma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body data-view="map">
+    <div class="page">
+      <header class="site-header">
+        <div class="container header-inner">
+          <div class="brand">
+            <span class="brand-dot"></span>
+            <div>
+              <p class="brand-title">Trova Catechesi – Roma</p>
+              <p class="brand-subtitle">
+                Parrocchie con Cammino Neocatecumenale e catechesi disponibili
+              </p>
+            </div>
+          </div>
+          <nav class="header-links">
+            <a href="#privacy">Privacy</a>
+            <a href="#contatti">Contatti</a>
+          </nav>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero container">
+          <div class="hero-card">
+            <h1>Trova la catechesi più vicina</h1>
+            <p class="hero-subtitle">
+              Inserisci un punto di partenza e scopri le parrocchie attive a Roma.
+            </p>
+            <form id="search-form" class="search-form" novalidate>
+              <label class="input-label" for="search-input">Punto di partenza</label>
+              <div class="input-row">
+                <input
+                  id="search-input"
+                  type="text"
+                  placeholder="Inserisci un indirizzo o una zona di Roma…"
+                  autocomplete="off"
+                  required
+                />
+                <button type="submit" class="primary-btn">Cerca</button>
+              </div>
+              <div class="filter-row">
+                <div class="filter">
+                  <span class="filter-label">Raggio</span>
+                  <div class="chip-group" role="radiogroup" aria-label="Raggio di ricerca">
+                    <label class="chip">
+                      <input type="radio" name="radius" value="5" checked />
+                      5 km
+                    </label>
+                    <label class="chip">
+                      <input type="radio" name="radius" value="10" />
+                      10 km
+                    </label>
+                    <label class="chip">
+                      <input type="radio" name="radius" value="20" />
+                      20 km
+                    </label>
+                  </div>
+                </div>
+                <label class="checkbox">
+                  <input type="checkbox" id="available-only" />
+                  Solo catechesi disponibili
+                </label>
+              </div>
+              <p class="microcopy">
+                Le informazioni possono essere verificate o segnalate dalla community.
+              </p>
+            </form>
+          </div>
+        </section>
+
+        <section class="content container">
+          <div class="mobile-tabs">
+            <button class="tab-btn active" data-view="map">Mappa</button>
+            <button class="tab-btn" data-view="list">Lista</button>
+          </div>
+
+          <div class="content-grid">
+            <div class="panel map-panel">
+              <div class="panel-header">
+                <h2>Mappa</h2>
+                <span id="results-summary" class="summary-tag">Nessuna ricerca attiva</span>
+              </div>
+              <div id="map" class="map"></div>
+            </div>
+
+            <div class="panel list-panel">
+              <div class="panel-header">
+                <h2>Risultati</h2>
+                <span id="results-count" class="summary-tag">0 parrocchie</span>
+              </div>
+              <div id="results" class="results"></div>
+              <div id="missing-location" class="missing-location"></div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="container footer-grid">
+          <div>
+            <h3 id="privacy">Privacy</h3>
+            <p>
+              Il sito non raccoglie dati personali. Le ricerche restano nel tuo browser.
+            </p>
+          </div>
+          <div>
+            <h3>Affidabilità</h3>
+            <p>
+              Alcune informazioni provengono da segnalazioni della community e potrebbero
+              richiedere conferma diretta presso la parrocchia.
+            </p>
+          </div>
+          <div id="contatti">
+            <h3>Contatti</h3>
+            <p>Per segnalazioni generiche: info@catechesi-roma.example</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          © <span id="year"></span> Trova Catechesi – Roma
+        </div>
+      </footer>
+    </div>
+
+    <div id="modal" class="modal" aria-hidden="true" role="dialog">
+      <div class="modal-backdrop" data-close="true"></div>
+      <div class="modal-card" role="document">
+        <button class="modal-close" data-close="true" aria-label="Chiudi">×</button>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="./assets/config.js"></script>
+    <script src="./assets/app.js"></script>
+  </body>
+</html>
