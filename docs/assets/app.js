@@ -261,6 +261,10 @@
     websiteLink.target = "_blank";
     websiteLink.rel = "noopener noreferrer";
     websiteLink.textContent = normalized;
+    websiteLink.setAttribute(
+      "aria-label",
+      `Visita il sito ${normalized} (si apre in una nuova scheda)`,
+    );
     return websiteLink;
   }
 
@@ -546,19 +550,19 @@
     elements.modalContent.appendChild(catechesisSection);
 
     if (formUrl) {
-      const button = createElementWithText("button", "action-btn", "Richiedi info catechesi");
-      button.setAttribute("data-form", formUrl);
-      elements.modalContent.appendChild(button);
-    }
-
-    const formButton = elements.modalContent.querySelector(".action-btn");
-    if (formButton) {
-      formButton.addEventListener("click", () => {
-        const url = formButton.getAttribute("data-form");
-        if (url) {
-          window.open(url, "_blank");
-        }
-      });
+      const formLink = createElementWithText(
+        "a",
+        "action-btn",
+        "Richiedi info catechesi (si apre in una nuova scheda)",
+      );
+      formLink.href = formUrl;
+      formLink.target = "_blank";
+      formLink.rel = "noopener noreferrer";
+      formLink.setAttribute(
+        "aria-label",
+        "Richiedi informazioni sulla catechesi (si apre in una nuova scheda)",
+      );
+      elements.modalContent.appendChild(formLink);
     }
 
     elements.modal.classList.add("active");
