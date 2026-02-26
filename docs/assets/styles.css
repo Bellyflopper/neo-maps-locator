@@ -65,11 +65,11 @@ a:hover {
   gap: 14px;
 }
 
-.brand-dot {
-  width: 16px;
-  height: 16px;
-  background: var(--color-primary);
-  border-radius: 999px;
+.brand-logo {
+  width: clamp(44px, 7vw, 62px);
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 .brand-title {
