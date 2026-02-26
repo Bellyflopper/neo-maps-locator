@@ -2,44 +2,48 @@
   "version": 1,
   "updated_at": "2026-02-14T10:00:00+01:00",
   "parishes": [
-    {
-      "id": "roma-001",
-      "name": "Parrocchia Santa Lucia al Colle",
-      "address": "Via delle Viole 18, Roma",
-      "lat": 41.9112,
-      "lng": 12.4783,
-      "diocese": "Diocesi di Roma",
-      "city": "Roma",
-      "is_active": true,
-      "contact": { "public_email": "segreteria@santalucia.example" },
-      "catechesis": {
-        "year": 2026,
-        "status": "AVAILABLE",
-        "days": ["Mon", "Thu"],
-        "time": "20:30",
-        "source_level": "VERIFIED",
-        "last_verified_at": "2026-01-08T18:30:00+01:00"
-      }
+{
+    "id": "roma-001",
+    "name": "Parrocchia San Giovanni Leonardi",
+    "address": "Via della Cicogna, 2",
+    "lat": 41.87414,
+    "lng": 12.59365,
+    "diocese": "Diocesi di Roma",
+    "city": "Roma",
+    "is_active": true,
+    "contact": {
+      "public_email": "info@sangiovannileonardi.com"
     },
-    {
-      "id": "roma-002",
-      "name": "Parrocchia San Matteo al Parco",
-      "address": "Piazza del Bosco 7, Roma",
-      "lat": 41.9021,
-      "lng": 12.5159,
-      "diocese": "Diocesi di Roma",
-      "city": "Roma",
-      "is_active": true,
-      "contact": { "public_email": "info@sanmatteo.example" },
-      "catechesis": {
-        "year": 2026,
-        "status": "UNKNOWN",
-        "days": [],
-        "time": null,
-        "source_level": "COMMUNITY",
-        "last_verified_at": null
-      }
+    "catechesis": {
+      "year": 2026,
+      "status": "AVAILABLE",
+      "days": ["Mon", "Thu"],
+      "time": "20:30",
+      "source_level": "VERIFIED",
+      "last_verified_at": "2026-01-26T18:30:00+01:00"
+    }
+  },
+  {
+    "id": "roma-002",
+    "name": "Parrocchia Sante Rufina e Seconda - Chiesa S. Gemma",
+    "address": "Piazza Castello di Porcareccia, 33",
+    "lat": 41.91672,
+    "lng": 12.38138,
+    "diocese": "Diocesi di Roma",
+    "city": "Roma",
+    "is_active": true,
+    "contact": {
+      "public_email": "segreteria@santerufinaeseconda.it"
     },
+    "catechesis": {
+      "year": 2026,
+      "status": "VERIFIED",
+      "days": ["Mon", "Thu"],
+      "time": "20:45",
+      "source_level": "VERIFIED",
+      "last_verified_at": "2026-01-26T18:30:00+01:00"
+    }
+  },
     {
       "id": "roma-003",
       "name": "Parrocchia San Paolo dei Colli",
@@ -55,7 +59,7 @@
         "status": "NOT_AVAILABLE",
         "days": ["Tue"],
         "time": "19:45",
-        "source_level": "VERIFIED",
+        "source_level": "COMMUNITY",
         "last_verified_at": "2026-02-02T09:15:00+01:00"
       }
     },
