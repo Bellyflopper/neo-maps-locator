@@ -18,7 +18,7 @@
         "status": "AVAILABLE",
         "days": ["Mon", "Thu"],
         "time": "20:30",
-        "start_date": "2026-03-12",
+        "start_date": "",
         "source_level": "VERIFIED",
         "last_verified_at": "2026-01-26T18:30:00+01:00"
       }
@@ -39,7 +39,7 @@
         "status": "AVAILABLE",
         "days": ["Mon", "Thu"],
         "time": "20:45",
-        "start_date": "2026-02-28",
+        "start_date": "2026-03-02",
         "source_level": "VERIFIED",
         "last_verified_at": "2026-01-26T18:30:00+01:00"
       }
