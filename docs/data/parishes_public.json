@@ -12,7 +12,7 @@
     "is_active": true,
     "contact": {
       "public_email": "info@sangiovannileonardi.com",
-      "website_url": "https:
+      "website_url": "https://www.sangiovannileonardi.com"
     },
     "catechesis": {
       "year": 2026,
@@ -48,7 +48,7 @@
       ],
       "time": "1899-12-30T21:06:16.000Z",
       "start_date": "2026-03-01T23:00:00.000Z",
-      "source_level": "COMMUNITY",
+      "source_level": "VERIFIED",
       "last_verified_at": "2026-02-26T17:14:25.994Z"
     }
   },
