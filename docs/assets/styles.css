@@ -48,7 +48,7 @@ a:hover {
   padding: 18px 0;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
 }
 
 .header-inner {
@@ -288,6 +288,38 @@ a:hover {
   overflow: hidden;
 }
 
+.popup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: "Manrope", system-ui, sans-serif;
+  color: var(--color-text);
+}
+
+.popup-title {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.popup-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.popup-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.popup-row span:last-child {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
 .results {
   display: flex;
   flex-direction: column;
@@ -322,6 +354,16 @@ a:hover {
   gap: 8px;
   color: var(--color-muted);
   font-size: 0.9rem;
+}
+
+.result-detail-row {
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.result-detail-row span:last-child {
+  font-weight: 600;
+  color: var(--color-text);
 }
 
 .badge {

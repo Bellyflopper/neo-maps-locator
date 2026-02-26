@@ -2,55 +2,54 @@
   "version": 1,
   "updated_at": "2026-02-14T10:00:00+01:00",
   "parishes": [
-{
-    "id": "roma-001",
-    "name": "Parrocchia San Giovanni Leonardi",
-    "address": "Via della Cicogna, 2",
-    "lat": 41.87414,
-    "lng": 12.59365,
-    "diocese": "Diocesi di Roma",
-    "city": "Roma",
-    "is_active": true,
-    "contact": {
-      "public_email": "info@sangiovannileonardi.com"
+    {
+      "id": "roma-001",
+      "name": "Parrocchia San Giovanni Leonardi",
+      "address": "Via della Cicogna, 2",
+      "lat": 41.87414,
+      "lng": 12.59365,
+      "city": "Roma",
+      "is_active": true,
+      "contact": {
+        "public_email": "info@sangiovannileonardi.com"
+      },
+      "catechesis": {
+        "year": 2026,
+        "status": "AVAILABLE",
+        "days": ["Mon", "Thu"],
+        "time": "20:30",
+        "start_date": "2026-03-12",
+        "source_level": "VERIFIED",
+        "last_verified_at": "2026-01-26T18:30:00+01:00"
+      }
     },
-    "catechesis": {
-      "year": 2026,
-      "status": "AVAILABLE",
-      "days": ["Mon", "Thu"],
-      "time": "20:30",
-      "source_level": "VERIFIED",
-      "last_verified_at": "2026-01-26T18:30:00+01:00"
-    }
-  },
-  {
-    "id": "roma-002",
-    "name": "Parrocchia Sante Rufina e Seconda - Chiesa S. Gemma",
-    "address": "Piazza Castello di Porcareccia, 33",
-    "lat": 41.91672,
-    "lng": 12.38138,
-    "diocese": "Diocesi di Roma",
-    "city": "Roma",
-    "is_active": true,
-    "contact": {
-      "public_email": "segreteria@santerufinaeseconda.it"
+    {
+      "id": "roma-002",
+      "name": "Parrocchia Sante Rufina e Seconda - Chiesa S. Gemma",
+      "address": "Piazza Castello di Porcareccia, 33",
+      "lat": 41.91672,
+      "lng": 12.38138,
+      "city": "Roma",
+      "is_active": true,
+      "contact": {
+        "public_email": "segreteria@santerufinaeseconda.it"
+      },
+      "catechesis": {
+        "year": 2026,
+        "status": "AVAILABLE",
+        "days": ["Mon", "Thu"],
+        "time": "20:45",
+        "start_date": "2026-02-28",
+        "source_level": "VERIFIED",
+        "last_verified_at": "2026-01-26T18:30:00+01:00"
+      }
     },
-    "catechesis": {
-      "year": 2026,
-      "status": "VERIFIED",
-      "days": ["Mon", "Thu"],
-      "time": "20:45",
-      "source_level": "VERIFIED",
-      "last_verified_at": "2026-01-26T18:30:00+01:00"
-    }
-  },
     {
       "id": "roma-003",
       "name": "Parrocchia San Paolo dei Colli",
       "address": "Via dei Tigli 55, Roma",
       "lat": 41.8849,
       "lng": 12.4761,
-      "diocese": "Diocesi di Roma",
       "city": "Roma",
       "is_active": true,
       "contact": { "public_email": null },
@@ -69,7 +68,6 @@
       "address": "Via del Gelso 4, Roma",
       "lat": 41.9342,
       "lng": 12.4625,
-      "diocese": "Diocesi di Roma",
       "city": "Roma",
       "is_active": true,
       "contact": { "public_email": "contatti@beataperanza.example" },
@@ -78,6 +76,7 @@
         "status": "AVAILABLE",
         "days": ["Wed", "Sat"],
         "time": "21:00",
+        "start_date": "2026-03-10",
         "source_level": "COMMUNITY",
         "last_verified_at": "2025-12-18T14:00:00+01:00"
       }
@@ -88,7 +87,6 @@
       "address": "Via delle Acacie 90, Roma",
       "lat": null,
       "lng": null,
-      "diocese": "Diocesi di Roma",
       "city": "Roma",
       "is_active": true,
       "contact": { "public_email": null },

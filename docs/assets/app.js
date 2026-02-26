@@ -176,11 +176,25 @@
   function formatDate(value) {
     if (!value) return "";
     const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return "";
     return date.toLocaleDateString("it-IT", {
       day: "2-digit",
-      month: "short",
+      month: "2-digit",
       year: "numeric",
     });
+  }
+
+  function formatStartDate(value) {
+    const formatted = formatDate(value);
+    return formatted || "Non indicata";
+  }
+
+  function formatContactEmail(value) {
+    return value || "Non indicata";
+  }
+
+  function formatDays(days) {
+    return days?.length ? days.map((d) => dayMap[d] || d).join(", ") : "Non indicati";
   }
 
   function buildGoogleFormUrl(parish) {
@@ -206,16 +220,39 @@
       const marker = L.marker([item.lat, item.lng]).addTo(state.map);
       marker.bindPopup(
         `<div class="popup">
-          <strong>${item.name}</strong><br />
-          <button class="popup-details" data-id="${item.id}">Dettagli</button>
+          <div class="popup-title">${item.name}</div>
+          <div class="popup-status">
+            <span class="status-pill ${statusClassMap[item.catechesis.status]}">
+              ${statusMap[item.catechesis.status]}
+            </span>
+            <span class="badge ${
+              item.catechesis.source_level === "VERIFIED" ? "verified" : "community"
+            }">
+              ${
+                item.catechesis.source_level === "VERIFIED"
+                  ? "Verificata"
+                  : "Segnalata dalla community"
+              }
+            </span>
+          </div>
+          <div class="popup-row">
+            <span>Giorni</span>
+            <span>${formatDays(item.catechesis.days)}</span>
+          </div>
+          <div class="popup-row">
+            <span>Orario</span>
+            <span>${item.catechesis.time || "Non indicato"}</span>
+          </div>
+          <div class="popup-row">
+            <span>Inizio catechesi</span>
+            <span>${formatStartDate(item.catechesis.start_date)}</span>
+          </div>
+          <div class="popup-row">
+            <span>Email</span>
+            <span>${formatContactEmail(item.contact?.public_email)}</span>
+          </div>
         </div>`,
       );
-      marker.on("popupopen", () => {
-        const btn = document.querySelector(`.popup-details[data-id="${item.id}"]`);
-        if (btn) {
-          btn.addEventListener("click", () => openDetails(item.id));
-        }
-      });
       state.markers.set(item.id, marker);
     });
   }
@@ -268,6 +305,14 @@
               }
             </span>
           </div>
+          <div class="result-meta result-detail-row">
+            <span>Inizio catechesi</span>
+            <span>${formatStartDate(item.catechesis.start_date)}</span>
+          </div>
+          <div class="result-meta result-detail-row">
+            <span>Email</span>
+            <span>${formatContactEmail(item.contact?.public_email)}</span>
+          </div>
           ${
             item.catechesis.last_verified_at
               ? `<div class="result-meta">Aggiornato il ${formatDate(
@@ -276,6 +321,7 @@
               : ""
           }
         `;
+
         card.addEventListener("click", () => focusResult(item.id));
         elements.results.appendChild(card);
       });
@@ -318,14 +364,16 @@
           ${statusMap[parish.catechesis.status]}
         </div>
         <div class="result-meta">
-          Giorni: ${
-            parish.catechesis.days?.length
-              ? parish.catechesis.days.map((d) => dayMap[d] || d).join(", ")
-              : "Non indicati"
-          }
+          Giorni: ${formatDays(parish.catechesis.days)}
         </div>
         <div class="result-meta">
           Orario: ${parish.catechesis.time || "Non indicato"}
+        </div>
+        <div class="result-meta">
+          Inizio catechesi: ${formatStartDate(parish.catechesis.start_date)}
+        </div>
+        <div class="result-meta">
+          Email: ${formatContactEmail(parish.contact?.public_email)}
         </div>
         ${
           parish.catechesis.last_verified_at
@@ -334,6 +382,7 @@
               )}</div>`
             : ""
         }
+
         <div class="badge ${
           parish.catechesis.source_level === "VERIFIED" ? "verified" : "community"
         }">
@@ -350,10 +399,6 @@
               </div>`
             : ""
         }
-      </div>
-      <div class="modal-section">
-        <strong>Diocesi</strong>
-        <div>${parish.diocese || "Non indicata"}</div>
       </div>
       ${
         formUrl
