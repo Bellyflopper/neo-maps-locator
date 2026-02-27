@@ -533,6 +533,7 @@ a:hover {
 
 .toast-container {
   position: fixed;
+  z-index: 3000;
   right: 18px;
   bottom: 18px;
   display: flex;
@@ -550,7 +551,6 @@ a:hover {
   transition: opacity 0.2s ease, transform 0.2s ease;
   max-width: 280px;
   font-size: 0.85rem;
-  z-index: 2000;
 }
 
 .toast.show {
