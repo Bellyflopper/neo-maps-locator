@@ -538,7 +538,6 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  z-index: 2000;
 }
 
 .toast {
@@ -551,6 +550,7 @@ a:hover {
   transition: opacity 0.2s ease, transform 0.2s ease;
   max-width: 280px;
   font-size: 0.85rem;
+  z-index: 2000;
 }
 
 .toast.show {
