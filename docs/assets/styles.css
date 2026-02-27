@@ -538,7 +538,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  z-index: 30;
+  z-index: 2000;
 }
 
 .toast {
