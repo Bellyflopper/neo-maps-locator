@@ -635,7 +635,14 @@
       renderResults(results, missingLocation);
       const contentContainer = document.getElementById("content-container");
       if (contentContainer) {
-        contentContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+        const header = document.querySelector(".site-header");
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const containerTop = contentContainer.getBoundingClientRect().top + window.scrollY;
+        const offset = headerHeight + 8;
+        window.scrollTo({
+          top: Math.max(containerTop - offset, 0),
+          behavior: "smooth",
+        });
       }
       showToast("Ricerca completata.", "success");
     } catch (error) {
