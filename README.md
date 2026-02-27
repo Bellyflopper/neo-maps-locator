@@ -150,18 +150,4 @@ Non pubblicare mai:
 - `admin-tool/config.local.php`
 - `admin-tool/data/parishes_master.json` (se contiene dati non pubblici)
 
-Il JSON pubblico deve essere generato con allow-list, escludendo campi sensibili o interni.
-
----
-
-## Dataset demo
-
-Il dataset demo è fittizio. Prima del go-live sostituiscilo con dati verificati.
-
----
-
-## Licenza e governance (proposta)
-
-Per facilitare contributi esterni:
-- aggiungere una licenza OSS (es. MIT),
-- definire una breve policy dati (fonti, verifica, attribuzione, limiti d’uso).
+Il JSON pubblico viene generato tramite segnalazioni da forms esterno e approvato manualmente dal repo owner. 
