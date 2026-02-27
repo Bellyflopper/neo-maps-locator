@@ -226,6 +226,10 @@ a:hover {
   padding: 20px 0 50px;
 }
 
+#content-container {
+  scroll-margin-top: 96px;
+}
+
 .mobile-tabs {
   display: flex;
   gap: 12px;
