@@ -1,4 +1,31 @@
 :root {
+  /* Palette Roma Imperiale */
+  --color-bg: #fdfbf7;           /* Travertino */
+  --color-surface: #ffffff;      /* Bianco Puro */
+  --color-primary: #b84a39;      /* Terracotta */
+  --color-primary-dark: #8e382b; /* Terracotta Scuro */
+  --color-accent: #b08d46;       /* Oro Imperiale (leggermente più scuro per contrasto) */
+  --color-text: #2d241e;         /* Marrone Notte (Autorità) */
+  --color-muted: #7a6b63;        /* Pietra */
+  --color-border: #e8e1d5;       /* Sabbia */
+  --color-success: #3e7b5e;      /* Verde Liturgico */
+  --color-warning: #b08d46;      /* Oro */
+  --color-info: #4a6fa5;         /* Blu Polvere */
+
+  /* Geometria Moderna e Autorevole */
+  --radius-lg: 12px;             /* Design solido e istituzionale */
+  --radius-md: 8px;
+  --radius-sm: 4px;
+
+  /* Ombre Calde */
+  --shadow-soft: 0 18px 50px rgba(184, 74, 57, 0.08);
+  --shadow-card: 0 12px 28px rgba(45, 36, 30, 0.12);
+
+  /* Tipografia Moderna Sans Serif */
+  --font-sans: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+} /*
+
+:root {
   --color-bg: #f6f4ff;
   --color-surface: #ffffff;
   --color-primary: #5c4ddf;
@@ -15,7 +42,7 @@
   --radius-sm: 12px;
   --shadow-soft: 0 18px 50px rgba(92, 77, 223, 0.1);
   --shadow-card: 0 12px 28px rgba(43, 36, 81, 0.12);
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -23,7 +50,9 @@
 
 body {
   margin: 0;
-  font-family: "Manrope", system-ui, sans-serif;
+  /* font-family: "Manrope", system-ui, sans-serif;
+  */
+  font-family: var(--font-sans);
   color: var(--color-text);
   background: var(--color-bg);
 }
