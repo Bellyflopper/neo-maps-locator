@@ -80,11 +80,11 @@
     }
   },
   {
-    "id": "rom-19b38",
-    "name": "Natività di nostro signore Gesù Cristo ",
-    "address": "Via gallia ",
-    "lat": 41.8811034,
-    "lng": 12.5035339,
+    "id": "rom-52a67",
+    "name": "Natività di Nostro Signore Gesù Cristo ",
+    "address": "Via Gallia, 162",
+    "lat": 41.8807129,
+    "lng": 12.5051094,
     "city": "Roma ",
     "is_active": true,
     "contact": {
@@ -98,16 +98,16 @@
         "Mon",
         "Thu"
       ],
-      "time": "20,30",
-      "start_date": "2/9/2026",
-      "source_level": "COMMUNITY",
-      "last_verified_at": "2026-02-26T21:05:10.329Z"
+      "time": "20:30",
+      "start_date": "2026-02-08T23:00:00.000Z",
+      "source_level": "VERIFIED",
+      "last_verified_at": "2026-03-02T07:38:44.255Z"
     }
   },
   {
-    "id": "rom-b41c7",
+    "id": "rom-a5c00",
     "name": "Santa Francesca Cabrini",
-    "address": "Piazza Massa Carrara 15",
+    "address": "Piazza Massa Carrara, 15",
     "lat": 41.9177581,
     "lng": 12.5259216,
     "city": "Roma ",
@@ -123,10 +123,10 @@
         "Mon",
         "Thu"
       ],
-      "time": "20,30",
-      "start_date": "2/2/2026",
-      "source_level": "COMMUNITY",
-      "last_verified_at": "2026-02-26T21:07:37.770Z"
+      "time": "20:30",
+      "start_date": "2026-02-01T23:00:00.000Z",
+      "source_level": "VERIFIED",
+      "last_verified_at": "2026-03-02T07:38:44.438Z"
     }
   }
 ]
