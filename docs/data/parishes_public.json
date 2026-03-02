@@ -4,7 +4,7 @@
   "parishes": 
 [
   {
-    "id": "rom-9fab6",
+    "id": "rom-99510",
     "name": "San Giovanni Leonardi",
     "address": "Via della Cicogna, 2",
     "lat": 41.865621,
@@ -23,13 +23,13 @@
         "Thu"
       ],
       "time": "21:00",
-      "start_date": "20/2/2026",
+      "start_date": "2026-02-20T00:00:00+01:00",
       "source_level": "VERIFIED",
-      "last_verified_at": "2026-03-02T07:24:35.047Z"
+      "last_verified_at": "2026-03-02T07:53:17.133Z"
     }
   },
   {
-    "id": "rom-21e6d",
+    "id": "rom-7cb1c",
     "name": "Parrocchia Sante Ruffina e Seconda - Chiesa S. Gemma",
     "address": "Piazza Castello di Porcareccia, 33",
     "lat": 41.9265632,
@@ -48,13 +48,13 @@
         "Thu"
       ],
       "time": "20:45",
-      "start_date": "2026-03-01T23:00:00.000Z",
+      "start_date": "2026-03-02T00:00:00+01:00",
       "source_level": "COMMUNITY",
-      "last_verified_at": "2026-02-26T17:57:05.191Z"
+      "last_verified_at": "2026-03-02T07:53:17.326Z"
     }
   },
   {
-    "id": "rom-d1f06",
+    "id": "rom-fe471",
     "name": "Parrocchia Test",
     "address": "Via Silicella 23",
     "lat": 41.8641047,
@@ -74,13 +74,13 @@
         "Fri"
       ],
       "time": "19:00",
-      "start_date": "2026-02-28T23:00:00.000Z",
+      "start_date": "2026-03-01T00:00:00+01:00",
       "source_level": "COMMUNITY",
-      "last_verified_at": "2026-02-26T17:57:05.362Z"
+      "last_verified_at": "2026-03-02T07:53:17.402Z"
     }
   },
   {
-    "id": "rom-52a67",
+    "id": "rom-9b508",
     "name": "Natività di Nostro Signore Gesù Cristo ",
     "address": "Via Gallia, 162",
     "lat": 41.8807129,
@@ -99,13 +99,13 @@
         "Thu"
       ],
       "time": "20:30",
-      "start_date": "2026-02-08T23:00:00.000Z",
+      "start_date": "2026-02-09T00:00:00+01:00",
       "source_level": "VERIFIED",
-      "last_verified_at": "2026-03-02T07:38:44.255Z"
+      "last_verified_at": "2026-03-02T07:53:17.468Z"
     }
   },
   {
-    "id": "rom-a5c00",
+    "id": "rom-b57c3",
     "name": "Santa Francesca Cabrini",
     "address": "Piazza Massa Carrara, 15",
     "lat": 41.9177581,
@@ -124,9 +124,9 @@
         "Thu"
       ],
       "time": "20:30",
-      "start_date": "2026-02-01T23:00:00.000Z",
+      "start_date": "2026-02-02T00:00:00+01:00",
       "source_level": "VERIFIED",
-      "last_verified_at": "2026-03-02T07:38:44.438Z"
+      "last_verified_at": "2026-03-02T07:53:17.547Z"
     }
   }
 ]
