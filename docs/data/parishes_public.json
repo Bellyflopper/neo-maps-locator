@@ -1,116 +1,133 @@
 {
   "version": 1,
   "updated_at": "2026-02-14T10:00:00+01:00",
-  "parishes": [
-    {
-      "id": "rom-272aa",
-      "name": "San Giovanni Leonardi",
-      "address": "Via della Cicogna, 2",
-      "lat": 41.865621,
-      "lng": 12.5942366,
-      "city": "Roma",
-      "is_active": true,
-      "contact": {
-        "public_email": "info@sangiovannileonardi.com",
-        "website_url": "https://www.sangiovannileonardi.com"
-      },
-      "catechesis": {
-        "year": 2026,
-        "status": "AVAILABLE",
-        "days": ["Mon", "Tue"],
-        "time": "20:30",
-        "start_date": "2026-03-02T00:00:00.000Z",
-        "source_level": "COMMUNITY",
-        "last_verified_at": "2026-02-26T17:14:25.809Z"
-      }
+  "parishes": 
+[
+  {
+    "id": "rom-9fab6",
+    "name": "San Giovanni Leonardi",
+    "address": "Via della Cicogna, 2",
+    "lat": 41.865621,
+    "lng": 12.5942366,
+    "city": "Roma",
+    "is_active": true,
+    "contact": {
+      "public_email": "info@sangiovannileonardi.com",
+      "website_url": "https:
     },
-    {
-      "id": "rom-6a93d",
-      "name": "Parrocchia Sante Ruffina e Seconda - Chiesa S. Gemma",
-      "address": "Piazza Castello di Porcareccia, 33",
-      "lat": 41.9265632,
-      "lng": 12.3668672,
-      "city": "Roma",
-      "is_active": true,
-      "contact": {
-        "public_email": "segreteria@santerufinaeseconda.it",
-        "website_url": "https://www.santerufinaeseconda.it"
-      },
-      "catechesis": {
-        "year": 2026,
-        "status": "AVAILABLE",
-        "days": ["Mon", "Thu"],
-        "time": "20:45",
-        "start_date": "2026-03-01T00:00:00.000Z",
-        "source_level": "VERIFIED",
-        "last_verified_at": "2026-02-26T17:14:25.994Z"
-      }
-    },
-    {
-      "id": "rom-ff364",
-      "name": "Parrocchia Test",
-      "address": "Via Silicella 23",
-      "lat": 41.8641047,
-      "lng": 12.5988076,
-      "city": "Roma",
-      "is_active": true,
-      "contact": {
-        "public_email": "",
-        "website_url": ""
-      },
-      "catechesis": {
-        "year": 2026,
-        "status": "AVAILABLE",
-        "days": ["Wed", "Thu", "Fri"],
-        "time": "18:00",
-        "start_date": "2026-02-28T00:00:00.000Z",
-        "source_level": "COMMUNITY",
-        "last_verified_at": "2026-02-26T17:14:26.098Z"
-      }
-    },
-    {
-      "id": "rom-19b38",
-      "name": "Natività di Nostro Signore Gesù Cristo",
-      "address": "Via Gallia 162",
-      "lat": 41.8811034,
-      "lng": 12.5035339,
-      "city": "Roma",
-      "is_active": true,
-      "contact": {
-        "public_email": "",
-        "website_url": ""
-      },
-      "catechesis": {
-        "year": 2026,
-        "status": "AVAILABLE",
-        "days": ["Mon", "Thu"],
-        "time": "20:30",
-        "start_date": "2026-02-09T00:00:00.000Z",
-        "source_level": "VERIFIED",
-        "last_verified_at": "2026-02-26T21:05:10.329Z"
-      }
-    },
-    {
-      "id": "rom-b41c7",
-      "name": "Santa Francesca Cabrini",
-      "address": "Piazza Massa Carrara, 15",
-      "lat": 41.9177581,
-      "lng": 12.5259216,
-      "city": "Roma",
-      "is_active": true,
-      "contact": {
-        "public_email": "",
-        "website_url": ""
-      },
-      "catechesis": {
-        "year": 2026,
-        "status": "AVAILABLE",
-        "days": ["Mon", "Thu"],
-        "time": "20:30",
-        "start_date": "2026-02-02T00:00:00.000Z",
-        "source_level": "VERIFIED",
-        "last_verified_at": "2026-02-26T21:07:37.770Z"
-      }
+    "catechesis": {
+      "year": 2026,
+      "status": "AVAILABLE",
+      "days": [
+        "Tue",
+        "Thu"
+      ],
+      "time": "21:00",
+      "start_date": "20/2/2026",
+      "source_level": "VERIFIED",
+      "last_verified_at": "2026-03-02T07:24:35.047Z"
     }
-  ]
+  },
+  {
+    "id": "rom-21e6d",
+    "name": "Parrocchia Sante Ruffina e Seconda - Chiesa S. Gemma",
+    "address": "Piazza Castello di Porcareccia, 33",
+    "lat": 41.9265632,
+    "lng": 12.3668672,
+    "city": "Roma",
+    "is_active": true,
+    "contact": {
+      "public_email": "segreteria@santerufinaeseconda.it",
+      "website_url": "https://www.santerufinaeseconda.it"
+    },
+    "catechesis": {
+      "year": 2026,
+      "status": "AVAILABLE",
+      "days": [
+        "Mon",
+        "Thu"
+      ],
+      "time": "20:45",
+      "start_date": "2026-03-01T23:00:00.000Z",
+      "source_level": "COMMUNITY",
+      "last_verified_at": "2026-02-26T17:57:05.191Z"
+    }
+  },
+  {
+    "id": "rom-d1f06",
+    "name": "Parrocchia Test",
+    "address": "Via Silicella 23",
+    "lat": 41.8641047,
+    "lng": 12.5988076,
+    "city": "Roma",
+    "is_active": true,
+    "contact": {
+      "public_email": "",
+      "website_url": ""
+    },
+    "catechesis": {
+      "year": 2026,
+      "status": "AVAILABLE",
+      "days": [
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "time": "19:00",
+      "start_date": "2026-02-28T23:00:00.000Z",
+      "source_level": "COMMUNITY",
+      "last_verified_at": "2026-02-26T17:57:05.362Z"
+    }
+  },
+  {
+    "id": "rom-19b38",
+    "name": "Natività di nostro signore Gesù Cristo ",
+    "address": "Via gallia ",
+    "lat": 41.8811034,
+    "lng": 12.5035339,
+    "city": "Roma ",
+    "is_active": true,
+    "contact": {
+      "public_email": "",
+      "website_url": ""
+    },
+    "catechesis": {
+      "year": 2026,
+      "status": "AVAILABLE",
+      "days": [
+        "Mon",
+        "Thu"
+      ],
+      "time": "20,30",
+      "start_date": "2/9/2026",
+      "source_level": "COMMUNITY",
+      "last_verified_at": "2026-02-26T21:05:10.329Z"
+    }
+  },
+  {
+    "id": "rom-b41c7",
+    "name": "Santa Francesca Cabrini",
+    "address": "Piazza Massa Carrara 15",
+    "lat": 41.9177581,
+    "lng": 12.5259216,
+    "city": "Roma ",
+    "is_active": true,
+    "contact": {
+      "public_email": "",
+      "website_url": ""
+    },
+    "catechesis": {
+      "year": 2026,
+      "status": "AVAILABLE",
+      "days": [
+        "Mon",
+        "Thu"
+      ],
+      "time": "20,30",
+      "start_date": "2/2/2026",
+      "source_level": "COMMUNITY",
+      "last_verified_at": "2026-02-26T21:07:37.770Z"
+    }
+  }
+]
 }
